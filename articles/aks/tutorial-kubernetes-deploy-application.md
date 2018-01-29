@@ -45,6 +45,12 @@ El nombre del servidor de inicio de sesión de ACR se obtiene con el comando [az
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
+Configure kubernetes to use your ACR
+
+```azurecli
+kubectrl create secret docker-registry <SECRET_NAME> --docker-server <REGISTRY_NAME>.azurecr.io --docker-email <YOUR_MAIL> --docker-username=<SERVICE_PRINCIPAL_ID> --docker-password <YOUR_PASSWORD>
+```
+
 
 El archivo de manifiesto se creó previamente con el nombre de servidor de inicio de sesión `microsoft`. Abra el archivo con un editor de texto. En este ejemplo, el archivo se abre con `vi`.
 
